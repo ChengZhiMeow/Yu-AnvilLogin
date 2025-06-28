@@ -59,6 +59,7 @@ public abstract class AbstractMenu implements InventoryHolder, Menu {
                 } catch (Exception ignored) {
                     player.openInventory(menu);
                 }
+
                 Login.getNoBlackList().remove(getPlayer().getName());
             });
         });

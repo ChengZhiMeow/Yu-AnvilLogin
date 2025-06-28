@@ -109,7 +109,7 @@ public final class FakePlayerInventory implements PacketListener {
 
         for (org.bukkit.inventory.ItemStack itemStack : fakeInventory.getContents()) {
             if (itemStack == null) {
-                itemList.add(null);
+                itemList.add(ItemStack.EMPTY);
                 continue;
             }
 

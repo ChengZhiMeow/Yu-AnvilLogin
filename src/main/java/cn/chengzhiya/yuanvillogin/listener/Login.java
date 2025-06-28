@@ -21,6 +21,7 @@ public final class Login implements Listener {
         AnvilUtil.getAnvilInputHashMap().remove(player.getName());
         FakePlayerInventory.getFakePlayerInventoryHashMap().remove(player.getName());
         player.updateInventory();
+
         player.closeInventory();
     }
 }

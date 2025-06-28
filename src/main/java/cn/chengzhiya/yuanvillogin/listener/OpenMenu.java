@@ -1,5 +1,6 @@
 package cn.chengzhiya.yuanvillogin.listener;
 
+import cn.chengzhiya.mhdfscheduler.scheduler.MHDFScheduler;
 import cn.chengzhiya.yuanvillogin.Main;
 import cn.chengzhiya.yuanvillogin.menu.LoginMenu;
 import cn.chengzhiya.yuanvillogin.menu.RegisterMenu;
@@ -16,20 +17,42 @@ public final class OpenMenu implements Listener {
         if (!ConfigUtil.getConfig().getBoolean("openMenu.join")) {
             return;
         }
-        openMenu(event.getPlayer());
+        Player player = event.getPlayer();
+
+        if (Main.instance.getPluginHookManager().getAuthmeHook().isLoggedIn(player)) {
+            return;
+        }
+
+        MHDFScheduler.getAsyncScheduler().runTaskLater(Main.instance, () -> openMenu(player),
+                ConfigUtil.getConfig().getInt("openMenu.delay")
+        );
     }
 
     @EventHandler
-    public void onPlayerResourcePackStatus(PlayerResourcePackStatusEvent status) {
+    public void onPlayerResourcePackStatus(PlayerResourcePackStatusEvent event) {
         if (!ConfigUtil.getConfig().getBoolean("openMenu.resourceLoadDone")) {
             return;
         }
-        Player player = status.getPlayer();
-        if (status.getStatus() == PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED) {
-            openMenu(player);
+        Player player = event.getPlayer();
+
+        if (Main.instance.getPluginHookManager().getAuthmeHook().isLoggedIn(player)) {
+            return;
         }
+
+        if (event.getStatus() != PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED) {
+            return;
+        }
+
+        MHDFScheduler.getAsyncScheduler().runTaskLater(Main.instance, () -> openMenu(player),
+                ConfigUtil.getConfig().getInt("openMenu.delay")
+        );
     }
 
+    /**
+     * 打开菜单
+     *
+     * @param player 玩家实例
+     */
     private void openMenu(Player player) {
         if (Main.instance.getPluginHookManager().getAuthmeHook()
                 .isRegistered(player)

@@ -14,6 +14,8 @@ openMenu:
   join: true
   # 资源包加载完成
   resourceLoadDone: false
+  # 延迟打开(单位: tick)
+  delay: 0
 
 # 缓存设置
 cacheSettings:

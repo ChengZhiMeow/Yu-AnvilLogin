@@ -1,12 +1,10 @@
 package cn.chengzhiya.yuanvillogin;
 
 import cn.chengzhiya.yuanvillogin.command.YuAnvilLogin;
-import cn.chengzhiya.yuanvillogin.listener.BanPlayer;
-import cn.chengzhiya.yuanvillogin.listener.Login;
-import cn.chengzhiya.yuanvillogin.listener.Menu;
-import cn.chengzhiya.yuanvillogin.listener.OpenMenu;
+import cn.chengzhiya.yuanvillogin.listener.*;
 import cn.chengzhiya.yuanvillogin.manager.*;
 import cn.chengzhiya.yuanvillogin.manager.config.ConfigManager;
+import cn.chengzhiya.yuanvillogin.task.AutoClose;
 import cn.chengzhiya.yuanvillogin.task.TakeBanTime;
 import cn.chengzhiya.yuanvillogin.util.message.LogUtil;
 import lombok.Getter;
@@ -53,6 +51,7 @@ public final class Main extends JavaPlugin {
         this.pluginHookManager.hook();
 
         Bukkit.getPluginManager().registerEvents(new BanPlayer(), this);
+        Bukkit.getPluginManager().registerEvents(new ForceOpenMenu(), this);
         Bukkit.getPluginManager().registerEvents(new Login(), this);
         Bukkit.getPluginManager().registerEvents(new Menu(), this);
         Bukkit.getPluginManager().registerEvents(new OpenMenu(), this);
@@ -60,6 +59,7 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("yuanvillogin")).setExecutor(new YuAnvilLogin());
         Objects.requireNonNull(getCommand("yuanvillogin")).setTabCompleter(new YuAnvilLogin());
 
+        new AutoClose().runTaskTimerAsynchronously(this, 0L, 20L);
         new TakeBanTime().runTaskTimerAsynchronously(this, 0L, 20L);
 
         LogUtil.log("&e-----------&6=&e鱼の铁砧登录&6=&e-----------");
