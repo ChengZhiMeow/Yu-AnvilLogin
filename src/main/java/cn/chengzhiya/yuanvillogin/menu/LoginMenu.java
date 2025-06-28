@@ -118,6 +118,10 @@ public final class LoginMenu extends AbstractMenu {
 
     @Override
     public void open(InventoryOpenEvent event) {
+        if (Main.instance.getPluginHookManager().getAuthmeHook().isLoggedIn(getPlayer())) {
+            event.setCancelled(true);
+            return;
+        }
         ActionUtil.runActionList(getPlayer(), getConfig().getStringList("openActions"));
     }
 
