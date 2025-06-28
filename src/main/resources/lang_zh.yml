@@ -1,0 +1,50 @@
+prefix: "&8[#FFA2DE鱼の铁砧登录&8]"
+onlyPlayer: "{prefix} &c这个命令只能玩家执行!"
+noPermission: "{prefix} &c你没有权限怎么做!"
+usageError: "{prefix} &c用法错误,正确用法: {usage}"
+playerOffline: "{prefix} &c你指定的玩家并没有在线!"
+commandInfoFormat: "  &f{usage}  \n &8 - &7{description}"
+
+inventory:
+  title:
+    reInput: "&a请重新填写!"
+    min: "&c密码最小需要{amount}!"
+    max: "&c密码最长只能为{amount}!"
+    maxRegister: "&c你的IP下只能注册{amount}个账户!"
+    noInput: "&c请填写密码!"
+    easy: "&c密码过于简单!"
+    error: "&c密码错误!"
+    errorAmount: "&c密码错误,你还可以尝试{amount}次!"
+
+ban: |-
+  &c密码错误过多 暂时封禁中!
+  &a你还需要等待{time}秒才可加入服务器!
+
+commands:
+  anvillogin:
+    subCommands:
+      help:
+        usage: "help"
+        description: "查看命令帮助"
+        message: |-
+          &f
+          &7&m     &r #FFA2DEYu-AnviLogin &f{version} - 铁砧登录 &7&m    &r
+          &f
+          &f  &7主命令:
+          &e  &7/yu-anvillogin:yuanvillogin &f[参数]
+          &f  &7参数:
+          {helpList}
+          &e
+      about:
+        usage: "about"
+        description: "查看插件信息"
+        message: |-
+          &f
+          &7&m     &r #FFA2DEYu-AnviLogin &f{version} - 铁砧登录 &7&m    &r
+          &e 
+          &f - 插件版本: &6{version}
+          &e
+      reload:
+        usage: "reload"
+        description: "重载插件配置"
+        message: "{prefix} &f插件重载完成!"

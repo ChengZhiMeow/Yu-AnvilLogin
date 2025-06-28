@@ -1,0 +1,16 @@
+name: Yu-AnvilLogin
+version: '${project.version}'
+main: cn.chengzhiya.yuanvillogin.Main
+api-version: '1.13'
+load: STARTUP
+folia-supported: true
+depend: [ AuthMe ]
+softdepend: [ PlaceholderAPI, MythicMobs, CraftEngine ]
+commands:
+  yuanvillogin:
+    description: 主命令
+    permission: anvillogin.commands.yuanvillogin
+permissions:
+  anvillogin.commands.yuanvillogin:
+    description: "主命令权限"
+    default: op

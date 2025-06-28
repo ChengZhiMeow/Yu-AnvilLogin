@@ -1,0 +1,56 @@
+#########################################PAPI变量#########################################
+# %playtime_time_amount%                ——当前累计在线时间(单位秒)
+# %playtime_time_format%                ——格式化后的当前累计在线时间
+# %playtime_daytime_amount%             ——当前今日在线时间(单位秒)
+# %playtime_daytime_format%             ——格式化后的今日在线时间
+#########################################PAPI变量#########################################
+
+# 调试模式
+debug: false
+
+# 打开菜单
+openMenu:
+  # 加入服务器
+  join: true
+  # 资源包加载完成
+  resourceLoadDone: false
+
+# 缓存设置
+cacheSettings:
+  # 存储类型
+  # (map redis)
+  type: "map"
+  # Redis数据库设置
+  redis:
+    # 地址
+    host: "localhost:6379"
+    # 用户
+    user: ""
+    # 密码
+    password: ""
+
+# 登录设置
+loginSettings:
+  # 注册限制
+  limit:
+    # 开关
+    enable: false
+    # 数量
+    amount: 1
+  # 密码设置
+  password:
+    # 最小长度
+    min: 6
+    # 最大长度
+    max: 16
+    # 过于简单的密码
+    easy:
+      - "123456"
+  # 密码错误限制
+  errorAmount:
+    # 开关
+    enable: true
+    # 最大错误次数
+    max: 5
+    # 封禁时间(单位: 秒)
+    banTime: 60
