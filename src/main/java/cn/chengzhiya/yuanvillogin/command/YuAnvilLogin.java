@@ -47,7 +47,7 @@ public final class YuAnvilLogin implements TabExecutor {
         {
             ActionUtil.sendMessage(sender,
                     LangUtil.i18n("commands.anvillogin.subCommands.help.message")
-                            .replace("{helpList}", LangUtil.getHelpList("anvillogin"))
+                            .replace("{helpList}", LangUtil.getHelpList("commands.anvillogin.subCommands"))
                             .replace("{command}", label)
             );
         }
