@@ -37,7 +37,7 @@ public final class LoginMenu extends AbstractMenu {
     public LoginMenu(Player player, TextComponent title) {
         super(
                 player,
-                MenuConfigUtil.getMenuConfig("login.yml")
+                MenuConfigUtil.getMenuConfig("login")
         );
         this.title = Objects.requireNonNullElseGet(
                 title,

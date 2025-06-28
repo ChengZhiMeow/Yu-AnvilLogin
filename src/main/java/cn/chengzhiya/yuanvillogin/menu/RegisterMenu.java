@@ -37,7 +37,7 @@ public final class RegisterMenu extends AbstractMenu {
     public RegisterMenu(Player player, TextComponent title) {
         super(
                 player,
-                MenuConfigUtil.getMenuConfig("register.yml")
+                MenuConfigUtil.getMenuConfig("register")
         );
         this.title = Objects.requireNonNullElseGet(
                 title,
