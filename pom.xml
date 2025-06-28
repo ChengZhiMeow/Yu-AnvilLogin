@@ -49,15 +49,6 @@
                                 </relocation>
 
                                 <relocation>
-                                    <pattern>org.h2</pattern>
-                                    <shadedPattern>cn.chengzhiya.yuanvillogin.libs.org.h2</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>com.mysql</pattern>
-                                    <shadedPattern>cn.chengzhiya.yuanvillogin.libs.com.mysql</shadedPattern>
-                                </relocation>
-
-                                <relocation>
                                     <pattern>net.kyori.adventure.platform</pattern>
                                     <shadedPattern>cn.chengzhiya.yuanvillogin.libs.net.kyori.adventure.platform</shadedPattern>
                                 </relocation>
@@ -76,14 +67,6 @@
                                 <relocation>
                                     <pattern>io.github.retrooper</pattern>
                                     <shadedPattern>cn.chengzhiya.yuanvillogin.libs.io.github.retrooper</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>com.j256.ormlite</pattern>
-                                    <shadedPattern>cn.chengzhiya.yuanvillogin.libs.com.j256.ormlite</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>com.zaxxer</pattern>
-                                    <shadedPattern>cn.chengzhiya.yuanvillogin.libs.com.zaxxer</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>io.lettuce</pattern>

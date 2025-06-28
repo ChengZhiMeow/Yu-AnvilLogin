@@ -77,45 +77,6 @@ public final class LibrariesManager {
                     )
             ));
 
-            // 数据库
-            mhdfLibrary.addDependencyConfig(new DependencyConfig(
-                    handleString("com{}j256{}ormlite"),
-                    "ormlite-core",
-                    "6.1",
-                    MHDFLibrary.mavenCenterMirror,
-                    new RelocateConfig(true)
-            ));
-            mhdfLibrary.addDependencyConfig(new DependencyConfig(
-                    handleString("com{}j256{}ormlite"),
-                    "ormlite-jdbc",
-                    "6.1",
-                    MHDFLibrary.mavenCenterMirror,
-                    new RelocateConfig(true)
-            ));
-            mhdfLibrary.addDependencyConfig(new DependencyConfig(
-                    handleString("com{}zaxxer"),
-                    "HikariCP",
-                    "6.1.0",
-                    MHDFLibrary.mavenCenterMirror,
-                    new RelocateConfig(true)
-            ));
-            mhdfLibrary.addDependencyConfig(new DependencyConfig(
-                    handleString("com{}h2database"),
-                    "h2",
-                    "2.3.232",
-                    MHDFLibrary.mavenCenterMirror,
-                    new RelocateConfig(true, false,
-                            handleString("org{}h2")
-                    )
-            ));
-            mhdfLibrary.addDependencyConfig(new DependencyConfig(
-                    handleString("com{}mysql"),
-                    "mysql-connector-j",
-                    "9.1.0",
-                    MHDFLibrary.mavenCenterMirror,
-                    new RelocateConfig(true)
-            ));
-
             // redis
             mhdfLibrary.addDependencyConfig(new DependencyConfig(
                     handleString("io{}lettuce"),
