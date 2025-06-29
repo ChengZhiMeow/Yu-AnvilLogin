@@ -3,6 +3,7 @@ package cn.chengzhiya.yuanvillogin.listener;
 import cn.chengzhiya.mhdfscheduler.scheduler.MHDFScheduler;
 import cn.chengzhiya.yuanvillogin.Main;
 import cn.chengzhiya.yuanvillogin.menu.AbstractMenu;
+import cn.chengzhiya.yuanvillogin.util.InventoryUtil;
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
@@ -64,15 +65,19 @@ public final class FakePlayerInventory implements PacketListener {
             return;
         }
 
-        Inventory inventory = player.getOpenInventory().getTopInventory();
-        if (!(inventory.getHolder() instanceof AbstractMenu menu)) {
+        if (!InventoryUtil.isOpenLoginMenu(player)) {
+            return;
+        }
+
+        Inventory inventory = InventoryUtil.getOpenInventory(player);
+        if (inventory == null) {
             return;
         }
 
         ItemStack item = packet.getCarriedItemStack();
         if (item != null && item.getAmount() >= 1) {
             MHDFScheduler.getGlobalRegionScheduler().runTask(Main.instance, () ->
-                    menu.clickItem(SpigotConversionUtil.toBukkitItemStack(item))
+                    ((AbstractMenu) inventory).clickItem(SpigotConversionUtil.toBukkitItemStack(item))
             );
             handleSendFakeCursorItem(player, item);
         }
@@ -102,7 +107,15 @@ public final class FakePlayerInventory implements PacketListener {
         List<ItemStack> itemList = new ArrayList<>();
 
         List<ItemStack> packetItemList = packet.getItems();
-        Inventory inventory = player.getOpenInventory().getTopInventory();
+        if (!InventoryUtil.isOpenLoginMenu(player)) {
+            return;
+        }
+
+        Inventory inventory = InventoryUtil.getOpenInventory(player);
+        if (inventory == null) {
+            return;
+        }
+
         for (int i = 0; i < inventory.getContents().length; i++) {
             itemList.add(packetItemList.get(i));
         }

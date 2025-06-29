@@ -3,6 +3,7 @@ package cn.chengzhiya.yuanvillogin.listener;
 import cn.chengzhiya.yuanvillogin.builder.ItemStackBuilder;
 import cn.chengzhiya.yuanvillogin.menu.AbstractMenu;
 import cn.chengzhiya.yuanvillogin.util.AnvilUtil;
+import cn.chengzhiya.yuanvillogin.util.InventoryUtil;
 import cn.chengzhiya.yuanvillogin.util.menu.MenuUtil;
 import com.github.retrooper.packetevents.event.PacketListener;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
@@ -32,8 +33,17 @@ public final class ChangeAnvilItemName implements PacketListener {
         WrapperPlayClientNameItem packet = new WrapperPlayClientNameItem(event);
         AnvilUtil.getAnvilInputHashMap().put(player.getName(), packet.getItemName().replace(" ", ""));
 
-        Inventory inventory = player.getOpenInventory().getTopInventory();
-        if (!(inventory.getHolder() instanceof AbstractMenu menu)) {
+        if (!InventoryUtil.isOpenLoginMenu(player)) {
+            return;
+        }
+
+        Inventory inventory = InventoryUtil.getOpenInventory(player);
+        if (inventory == null) {
+            return;
+        }
+
+        AbstractMenu menu = (AbstractMenu) inventory.getHolder();
+        if (menu == null) {
             return;
         }
 

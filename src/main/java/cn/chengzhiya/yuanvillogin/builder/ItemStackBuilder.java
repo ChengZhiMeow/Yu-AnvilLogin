@@ -77,7 +77,7 @@ public final class ItemStackBuilder {
         if (PluginUtil.isNativeSupportAdventureApi()) {
             meta.displayName(text);
         } else {
-            meta.setDisplayName(text.toLegacyString());
+            meta.setDisplayName(!text.toLegacyString().isEmpty() ? text.toLegacyString() : " ");
         }
         this.item.setItemMeta(meta);
         return this;

@@ -5,7 +5,6 @@ import cn.chengzhiya.yuanvillogin.Main;
 import cn.chengzhiya.yuanvillogin.listener.FakePlayerInventory;
 import cn.chengzhiya.yuanvillogin.listener.Login;
 import cn.chengzhiya.yuanvillogin.util.reflection.ReflectionUtil;
-import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import fr.xephi.authme.api.v3.AuthMeApi;
 import lombok.Getter;
 import org.bukkit.configuration.file.YamlConfiguration;

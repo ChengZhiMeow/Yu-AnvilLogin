@@ -4,7 +4,6 @@ import cn.chengzhiya.yuanvillogin.Main;
 import cn.chengzhiya.yuanvillogin.util.AnvilUtil;
 import com.github.retrooper.packetevents.protocol.item.ItemStack;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSetPlayerInventory;
-import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerWindowItems;
 import fr.xephi.authme.events.LoginEvent;
 import io.github.retrooper.packetevents.util.SpigotConversionUtil;
 import lombok.Getter;
@@ -13,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public final class Login implements Listener {
@@ -37,7 +35,7 @@ public final class Login implements Listener {
                 ItemStack itemStack;
                 if (item == null) {
                     itemStack = ItemStack.EMPTY;
-                }else {
+                } else {
                     itemStack = SpigotConversionUtil.fromBukkitItemStack(item);
                 }
 
