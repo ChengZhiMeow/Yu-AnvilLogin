@@ -77,7 +77,7 @@ public final class FakePlayerInventory implements PacketListener {
         ItemStack item = packet.getCarriedItemStack();
         if (item != null && item.getAmount() >= 1) {
             MHDFScheduler.getGlobalRegionScheduler().runTask(Main.instance, () ->
-                    ((AbstractMenu) inventory).clickItem(SpigotConversionUtil.toBukkitItemStack(item))
+                    ((AbstractMenu) inventory.getHolder()).clickItem(SpigotConversionUtil.toBukkitItemStack(item))
             );
             handleSendFakeCursorItem(player, item);
         }
