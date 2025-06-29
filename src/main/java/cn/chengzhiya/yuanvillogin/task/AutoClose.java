@@ -3,7 +3,7 @@ package cn.chengzhiya.yuanvillogin.task;
 import cn.chengzhiya.mhdfscheduler.runnable.MHDFRunnable;
 import cn.chengzhiya.mhdfscheduler.scheduler.MHDFScheduler;
 import cn.chengzhiya.yuanvillogin.Main;
-import cn.chengzhiya.yuanvillogin.menu.AbstractMenu;
+import cn.chengzhiya.yuanvillogin.util.InventoryUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -15,7 +15,7 @@ public final class AutoClose extends MHDFRunnable {
                 continue;
             }
 
-            if (!(player.getOpenInventory().getTopInventory().getHolder() instanceof AbstractMenu)) {
+            if (!(InventoryUtil.isOpenLoginMenu(player))) {
                 continue;
             }
 
