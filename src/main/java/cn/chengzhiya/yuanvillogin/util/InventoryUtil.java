@@ -15,31 +15,35 @@ public final class InventoryUtil {
      * @return 结果
      */
     public static boolean isOpenLoginMenu(Player player) {
-        Object inventoryView;
-        if (Main.instance.getPluginHookManager().getPacketEventsHook().getServerVersion()
-                .isNewerThanOrEquals(ServerVersion.V_1_21)
-        ) {
-            inventoryView = player.getOpenInventory();
-        } else {
-            inventoryView = ReflectionUtil.invokeMethod(
-                    ReflectionUtil.getMethod(Player.class, "getOpenInventory", true),
-                    player
+        try {
+            Object inventoryView;
+            if (Main.instance.getPluginHookManager().getPacketEventsHook().getServerVersion()
+                    .isNewerThanOrEquals(ServerVersion.V_1_21)
+            ) {
+                inventoryView = player.getOpenInventory();
+            } else {
+                inventoryView = ReflectionUtil.invokeMethod(
+                        ReflectionUtil.getMethod(Player.class, "getOpenInventory", true),
+                        player
+                );
+            }
+
+            if (inventoryView == null) {
+                return false;
+            }
+
+            Inventory inventory = ReflectionUtil.invokeMethod(
+                    ReflectionUtil.getMethod(inventoryView.getClass(), "getTopInventory", true),
+                    inventoryView
             );
-        }
 
-        if (inventoryView == null) {
+            if (inventory == null) {
+                return false;
+            }
+
+            return inventory.getHolder() instanceof AbstractMenu;
+        }catch (Exception e) {
             return false;
         }
-
-        Inventory inventory = ReflectionUtil.invokeMethod(
-                ReflectionUtil.getMethod(inventoryView.getClass(), "getTopInventory", true),
-                inventoryView
-        );
-
-        if (inventory == null) {
-            return false;
-        }
-
-        return inventory.getHolder() instanceof AbstractMenu;
     }
 }
